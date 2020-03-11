@@ -136,7 +136,7 @@ def mine():
 
     success = blockchain.valid_proof(data.proof, data.id)
     response = {
-        "message": f"Success: {success}."
+        "message": "New block forged!" if success else 'Failed to forge new block.'
     }
     return jsonify(response), 201
 
