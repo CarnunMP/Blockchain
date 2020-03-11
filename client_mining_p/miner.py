@@ -4,6 +4,8 @@ import requests
 import sys
 import json
 
+import time
+
 
 def proof_of_work(block):
     """
@@ -38,7 +40,7 @@ def valid_proof(block_string, proof):
     guess = f"{block_string}{proof}".encode()
     guess_hash = hashlib.sha256(guess).hexdigest()
     
-    return guess_hash[:2] == "00"
+    return guess_hash[:6] == "000000"
 
 
 if __name__ == '__main__':
@@ -70,8 +72,10 @@ if __name__ == '__main__':
 
         # TODO: Get the block from `data` and use it to look for a new proof
         print("Searching for new proof...")
+        t0 = time.time()
         new_proof = proof_of_work(data)
-        print("New proof found!")
+        t1 = time.time()
+        print(f"New proof found in {t1 - t0}s!")
 
         # When found, POST it to the server {"proof": new_proof, "id": id}
         post_data = {"proof": new_proof, "id": id}

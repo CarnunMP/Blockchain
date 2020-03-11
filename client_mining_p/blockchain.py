@@ -110,7 +110,7 @@ class Blockchain(object):
         # create a guess hash and hexdigest it
         guess_hash = hashlib.sha256(guess).hexdigest()
         # then return True if the guess hash has the valid number of leading zeros otherwise return False
-        return guess_hash[:2] == "00"
+        return guess_hash[:6] == "000000"
 
 
 
