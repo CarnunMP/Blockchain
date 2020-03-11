@@ -77,21 +77,21 @@ class Blockchain(object):
     def last_block(self):
         return self.chain[-1]
 
-    def proof_of_work(self, block):
-        """
-        Simple Proof of Work Algorithm
-        Stringify the block and look for a proof.
-        Loop through possibilities, checking each one against `valid_proof`
-        in an effort to find a number that is a valid proof
-        :return: A valid proof for the provided block
-        """
-        block_string = json.dumps(block, sort_keys=True)
-        proof = 0
-        # loop while the return from a call to valid proof is False
-        while self.valid_proof(block_string, proof) is False:
-            proof += 1        
-        # return proof
-        return proof
+    # def proof_of_work(self, block):
+    #     """
+    #     Simple Proof of Work Algorithm
+    #     Stringify the block and look for a proof.
+    #     Loop through possibilities, checking each one against `valid_proof`
+    #     in an effort to find a number that is a valid proof
+    #     :return: A valid proof for the provided block
+    #     """
+    #     block_string = json.dumps(block, sort_keys=True)
+    #     proof = 0
+    #     # loop while the return from a call to valid proof is False
+    #     while self.valid_proof(block_string, proof) is False:
+    #         proof += 1        
+    #     # return proof
+    #     return proof
 
     @staticmethod
     def valid_proof(block_string, proof):
@@ -111,7 +111,7 @@ class Blockchain(object):
         guess_hash = hashlib.sha256(guess).hexdigest()
         pass
         # then return True if the guess hash has the valid number of leading zeros otherwise return False
-        return guess_hash[:3] == "000"
+        return guess_hash[:6] == "000000"
 
 
 
@@ -146,6 +146,10 @@ def full_chain():
         "chain": blockchain.chain
     }
     return jsonify(response), 200
+
+@app.route('/last_block', methods=['GET'])
+def last_in_chain():
+  return jsonify(blockchain.chain[-1]), 200
 
 
 # Run the program on port 5000

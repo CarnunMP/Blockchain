@@ -67,6 +67,7 @@ if __name__ == '__main__':
             break
 
         # TODO: Get the block from `data` and use it to look for a new proof
+        print(data)
         # new_proof = ???
 
         # When found, POST it to the server {"proof": new_proof, "id": id}
