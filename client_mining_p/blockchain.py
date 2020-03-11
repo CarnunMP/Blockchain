@@ -109,9 +109,8 @@ class Blockchain(object):
         guess = f"{block_string}{proof}".encode()
         # create a guess hash and hexdigest it
         guess_hash = hashlib.sha256(guess).hexdigest()
-        pass
         # then return True if the guess hash has the valid number of leading zeros otherwise return False
-        return guess_hash[:6] == "000000"
+        return guess_hash[:2] == "00"
 
 
 
@@ -128,15 +127,19 @@ blockchain = Blockchain()
 @app.route('/mine', methods=['POST'])
 def mine():
     data = request.get_json()
-    if not data.proof or not data.id:
+    if not data["proof"] or not data["id"]:
         response = {
             "message": "Missing proof and/or id. Please try again."
         }
         return jsonify(response), 400
 
-    success = blockchain.valid_proof(data.proof, data.id)
+    block_string = json.dumps(blockchain.last_block, sort_keys=True)
+    success = blockchain.valid_proof(block_string, data["proof"])
+    
+    message = "New block forged!" if success else "Failed to forge new block."
+    
     response = {
-        "message": "New block forged!" if success else 'Failed to forge new block.'
+        "message": message
     }
     return jsonify(response), 201
 

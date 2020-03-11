@@ -38,7 +38,7 @@ def valid_proof(block_string, proof):
     guess = f"{block_string}{proof}".encode()
     guess_hash = hashlib.sha256(guess).hexdigest()
     
-    return guess_hash[:6] == "000000"
+    return guess_hash[:2] == "00"
 
 
 if __name__ == '__main__':
@@ -82,10 +82,10 @@ if __name__ == '__main__':
         # TODO: If the server responds with a 'message' 'New Block Forged'
         # add 1 to the number of coins mined and print it.  Otherwise,
         # print the message from the server.
-        if data.message == "New block forged!":
-            print(data.message)
+        if data["message"] == "New block forged!":
+            print(data["message"])
             coins_mined += 1
             print(f"Total numer of coins mined: {coins_mined}")
         else:
-            print(data.message)
+            print(data["message"])
 
