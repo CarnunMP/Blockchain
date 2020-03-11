@@ -134,7 +134,7 @@ def mine():
         }
         return jsonify(response), 400
 
-    success = blockchain.valid_proof(data.proof, data.id):
+    success = blockchain.valid_proof(data.proof, data.id)
     response = {
         "message": f"Success: {success}."
     }
