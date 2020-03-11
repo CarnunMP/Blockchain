@@ -75,7 +75,7 @@ if __name__ == '__main__':
         t0 = time.time()
         new_proof = proof_of_work(data)
         t1 = time.time()
-        print(f"New proof found in {t1 - t0}s!")
+        print(f"New proof found in {t1 - t0}s:\n  {new_proof}")
 
         # When found, POST it to the server {"proof": new_proof, "id": id}
         post_data = {"proof": new_proof, "id": id}
