@@ -138,6 +138,11 @@ def mine():
     
     message = "New block forged!" if success else "Failed to forge new block."
     
+    if success:
+        # Forge the new Block by adding it to the chain with the proof
+        previous_hash = blockchain.hash(blockchain.last_block)
+        block = blockchain.new_block(data["proof"], previous_hash)
+        
     response = {
         "message": message
     }
@@ -146,9 +151,6 @@ def mine():
     # Run the proof of work algorithm to get the next proof
     # proof = blockchain.proof_of_work()
 
-    # # Forge the new Block by adding it to the chain with the proof
-    # previous_hash = blockchain.hash(blockchain.last_block)
-    # block = blockchain.new_block(proof, previous_hash)
 
     # response = { "block": block }
 
