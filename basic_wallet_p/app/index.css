@@ -22,7 +22,7 @@ div {
 }
 
 .container.id {
-  background: green;
+  /* background: green; */
 
   display: flex;
   justify-content: space-between;
@@ -35,13 +35,13 @@ div {
 }
 
 .container.balance {
-  background: red;
+  /* background: red; */
 
   display: flex;
 }
 
 .container.transactions {
-  background: blue;
+  /* background: blue; */
 
   display: flex;
   flex-direction: column;
