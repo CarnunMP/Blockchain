@@ -11,6 +11,10 @@ div {
   align-items: center;
 }
 
+.container {
+  padding: 0 1rem;
+}
+
 .container.widgit {
   background: whitesmoke;
   border-radius: 5px;
@@ -21,6 +25,13 @@ div {
   background: green;
 
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#input {
+  background: white;
+  height: 1rem;
+  width: 2rem;
 }
 
 .container.balance {
