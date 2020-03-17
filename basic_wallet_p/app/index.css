@@ -1,0 +1,48 @@
+div {
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  padding: 0 1rem;
+}
+
+.container.widgit {
+  background: whitesmoke;
+  border-radius: 5px;
+  padding: 1rem 2rem;
+}
+
+.container.id {
+  /* background: green; */
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#input {
+  background: white;
+  height: 1rem;
+  width: 2rem;
+}
+
+.container.balance {
+  /* background: red; */
+
+  display: flex;
+}
+
+.container.transactions {
+  /* background: blue; */
+
+  display: flex;
+  flex-direction: column;
+}
